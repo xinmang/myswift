@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}所有文件{% endblock %}
+{% block detial %}
+
+<div>
+
+<div class="form-group">
+          <form class="form-inline" method="post" enctype="multipart/form-data" accept-charset="utf-8">  
+          {% csrf_token %}
+          
+                  <input class="form-control col-xs-8" type="file" name="file">
+                  <input class="btn btn-success fileinput-button" type="submit" value="上传文件">
+
+          </form></div>
+ </div> <br><br>
+
+{% if auth %}
+	<div class="layui-form news_list">
+	  	<table class="layui-table">
+		    <colgroup>
+				<col width="50">
+				<col>
+				<col width="9%">
+				<col width="9%">
+				<col width="9%">
+				<col width="9%">
+				<col width="9%">
+				<col width="15%">
+		    </colgroup>
+		    <thead>
+				<tr>
+					<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>
+					<th style="text-align:left;">文件名</th>
+					<th>大小</th>
+					<th>时间</th>
+					<th>操作</th>
+				</tr> 
+		    </thead>
+		    <tbody class="news_content"></tbody>
+		
+	</div><br>
+{% for i in auth %}
+<tr><td></td>
+<td>
+<a href='/get_object_body_views/?container={{container}}&object={{ i }}/'>{{ i }}</a>
+</td>
+<td>21
+</td><td>2017年12月24日</td><td>
+<button onclick="window.location.href='/get_object_views/?container={{container}}&object={{ i }}&download=true'">下载</button> 
+<button onclick="window.location.href='/get_object_views/?container={{container}}&object={{ i }}&delete=true'">删除</button>
+</td></tr>
+<br>
+{% endfor %}
+{% else %}
+<h2>这里什么也没有，可以选择上传文件</h2>
+{% endif %}</table>
+
+
+
+
+
+
+
+{% endblock %}

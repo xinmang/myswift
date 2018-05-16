@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}文件内容{% endblock %}
+{% block detial %}
+
+{% if obj_body %}
+{{ obj_body }}
+{% endif %}
+<br><br><br><br><br><br><br><br><br>
+<a href="javascript:goUrl();">返回上一页</a>
+<script language="javascript">
+function goUrl(){
+window.location.href=document.referrer;
+}
+</script>
+{% endblock %}

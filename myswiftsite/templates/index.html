@@ -1,0 +1,5 @@
+{% if container %}
+{% for i in container %}
+<a href='/get_object_views/?container={{ i }}/'>{{ i }}</a>
+{% endfor %}
+{% endif %}
